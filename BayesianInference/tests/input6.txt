@@ -1,7 +1,7 @@
 Network
-Variables: A,B,D,E,L,S,T,X
+Variables: Z,B,D,E,L,S,T,X
 
-Var A
+Var Z
 Values: true, false
 Parents: none
 CPT:
@@ -47,7 +47,7 @@ CPT:
 
 Var T
 Values: true, false
-Parents: A
+Parents: Z
 CPT:
 true,=true,0.05
 false,=true,0.01
@@ -63,9 +63,9 @@ Queries
 P(X=true|B=false),1
 P(X=true|B=false),2
 P(X=true|B=false),3
-P(D=true|A=true),1
-P(D=true|A=true),2
-P(D=true|A=true),3
-P(L=false|A=false),1
-P(L=false|A=false),2
-P(L=false|A=false),3
+P(D=true|Z=true),1
+P(D=true|Z=true),2
+P(D=true|Z=true),3
+P(L=false|Z=false),1
+P(L=false|Z=false),2
+P(L=false|Z=false),3

@@ -6,41 +6,51 @@
 #include "library.h"
 using namespace std;
 
-int Factor::get_prob_table_index(vector<int> value_numbers)
+int Factor::get_prob_table_index(vector<int> values)
 {
-	int index = 0;//if no parents index is 0
-	int skip = 1;
-	for (int i = 0; i < value_numbers.size(); i++)
+	int index = values[values.size() - 1];
+	int skip = max_values[values.size() - 1];
+	for (int i = 0; i < values.size() - 1; i++)
 	{
-		index += value_numbers[i] * skip;
-		skip *= variables.size();
+		index += values[i] * skip;
+		skip *= (max_values[i]);
 	}
 	return index;
 }
-float Factor::get_prob(vector<int> value_numbers)
+float Factor::get_prob(vector<int> values)
 {
-	float prob = 0;// = cpt[get]
-	return prob;
+	return prob_table[get_prob_table_index(values)];
 }
 
+void Factor::set_prob(vector<int> values, float prob)
+{
+	prob_table[get_prob_table_index(values)] = prob;
+	return;
+}
+float Var::get_prob_from_values(vector<int> values)//get values of parents and of the variable, return probability from tcp
+{
+	return cpt[get_cpt_index(values)];
+}
 float Var::get_prob(int value)//return probability from the cpt table, given vector of parents value and this variable state
 {
-	vector<int> parents_value_numbers;
+	vector<int> values;
+	
 	for (int i = 0; i < parents.size(); i++)
 	{
-		parents_value_numbers.push_back(parents[i]->current_value);
+		values.push_back(parents[i]->current_value);
 	}
-	float prob = cpt[get_cpt_index(parents_value_numbers)][value];
+	values.push_back(value);
+	float prob = cpt[get_cpt_index(values)];
 	return prob;
 }
 int Var::get_cpt_index(vector<int> value_numbers)//return the index of the index in cpt vector, given vector of parents value indexes
 {
-	int index = 0;//if no parents index is 0
-	int skip = 1;
-	for (int i = 0; i < value_numbers.size(); i++)
+	int index = value_numbers[value_numbers.size() - 1];
+	int skip = Values.size();
+	for (int i = 0; i < value_numbers.size()-1; i++)
 	{
 		index += value_numbers[i] * skip;
-		skip *= parents[i]->Values.size();
+		skip *= (parents[i]->Values.size());//+Values.size()
 	}
 	return index;
 }

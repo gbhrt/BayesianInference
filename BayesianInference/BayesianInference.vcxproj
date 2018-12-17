@@ -114,6 +114,7 @@
     <ClCompile Include="query_algorithms.cpp" />
     <ClCompile Include="BayesianInference.cpp" />
     <ClCompile Include="functions_lib.cpp" />
+    <ClCompile Include="general_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="library.h" />

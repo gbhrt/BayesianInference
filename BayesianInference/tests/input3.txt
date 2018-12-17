@@ -44,6 +44,6 @@ P(L=true|I=true,D=true),3
 P(L=true|D=true),1
 P(L=true|D=true),2
 P(L=true|D=true),3
-P(G=medium|S=false),1
-P(G=medium|S=false),2
-P(G=medium|S=false),3
+P(G= medium|S=false),1
+P(G= medium|S=false),2
+P(G= medium|S=false),3

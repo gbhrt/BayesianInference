@@ -31,3 +31,4 @@ P(C=run|B=set,A=true),3
 P(A=true|C=run),1
 P(A=true|C=run),2
 P(A=true|C=run),3
+
