@@ -1,9 +1,8 @@
-#pragma once
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <vector>
-#include "library.h"
+#include "header.h"
 using namespace std;
 
 int Factor::get_prob_table_index(vector<int> values)
@@ -56,8 +55,6 @@ int Var::get_cpt_index(vector<int> value_numbers)//return the index of the index
 }
 int Var::get_value_num(string value_name)//return the index of the value
 {
-	/*int * num;
-	num = find(variables.begin(), variables.end(), var_name);*/
 	int i;
 	for (i = 0; i<Values.size(); i++)
 	{
@@ -67,17 +64,12 @@ int Var::get_value_num(string value_name)//return the index of the value
 	if (i < Values.size())
 		return i;
 	else
-	{
-		//cout << "error - get_var_num cannot find: " << var_name << endl;
 		return -1;
-	}
 }
 
 
 int BayesianNetwork::get_var_num(string var_name)
 {
-	/*int * num;
-	num = find(variables.begin(), variables.end(), var_name);*/
 	int i;
 	for (i = 0; i<variables.size(); i++)
 	{
@@ -87,10 +79,8 @@ int BayesianNetwork::get_var_num(string var_name)
 	if (i < variables.size())
 		return i;
 	else
-	{
-		//cout << "error - get_var_num cannot find: " << var_name << endl;
+
 		return -1;
-	}
 }
 
 

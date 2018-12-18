@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BayesianInference.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="query_algorithms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -27,12 +24,24 @@
     <ClCompile Include="class_definitions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="general_functions.cpp">
+    <ClCompile Include="ex1cpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="heuristic_variable_order.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm1_lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="algorithm2_3_lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="read_file_lib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="library.h">
+    <ClInclude Include="header.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
