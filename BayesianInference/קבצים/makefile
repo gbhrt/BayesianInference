@@ -1,2 +1,2 @@
 all: 
-	g++ -lm -ansi  -pedantic class_definitions.cpp ex1cpp.cpp functions_lib.cpp general_functions.cpp query_algorithms.cpp
+	g++ -lm -ansi  -pedantic ex1cpp.cpp functions_lib.cpp heuristic_variable_order.cpp query_algorithms.cpp read_file_lib.cpp algorithm1_lib.cpp algorithm2_3_lib.cpp class_definitions.cpp

@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-		string input_file_name ( "input2.txt" );
+		string input_file_name ( "input.txt");
 		string output_file_name ( "output.txt" );
 
 		BayesianNetwork BayesNet = BayesianNetwork();//contain all the data about the bayesian network.
@@ -26,6 +26,5 @@ int main()
 
 		save_data(output_file_name, answers);
 
-	getchar();
 	return 0;
 }

@@ -1,19 +1,10 @@
-#include <iostream>
 #include <string>
 #include <fstream>
 #include <vector>
 
-#include "library.h"
+#include "header.h"
 
 using namespace std;
-
-
-void pause_exit()
-{
-	cout << "press any key to exit the program" << endl;
-	getchar();
-	//exit(1);
-}
 
 string replace_substr(string str, string search, string replace)
 {
@@ -138,7 +129,6 @@ int read_variable_data(vector<string> line_buffer, int & line_index, BayesianNet
 		int cpt_lenght = 1;//compute the size of cpt table
 		for (int i = 0; i < BayesNet.variables[var_num].parents.size(); i++)
 			cpt_lenght *= BayesNet.variables[var_num].parents[i]->Values.size();
-		/*BayesNet.variables[var_num].cpt.resize(cpt_lenght,probs);*/
 		BayesNet.variables[var_num].cpt.resize(cpt_lenght*values_size, -1);
 
 		line = run_to_line(line_buffer, line_index, "CPT:");
@@ -153,13 +143,12 @@ int read_variable_data(vector<string> line_buffer, int & line_index, BayesianNet
 			{
 				value_numbers.push_back(BayesNet.variables[var_num].parents[i]->get_value_num(tokens[i]));
 			}
-			//int value_index = BayesNet.variables[var_num].get_cpt_index(value_numbers);
 			float prob_sum = 0;
 			value_numbers.push_back(0);
 			for (int i = BayesNet.variables[var_num].parents.size(); i < tokens.size(); i += 2)//read var values and prob and insert to cpt
 			{
-
 				int value_num = BayesNet.variables[var_num].get_value_num(remove_equal_sign(tokens[i]));
+
 				value_numbers.back() = value_num;//replace last value
 				int cpt_index = BayesNet.variables[var_num].get_cpt_index(value_numbers);//comute index in cpt table based on parents and variable values
 
@@ -176,19 +165,6 @@ int read_variable_data(vector<string> line_buffer, int & line_index, BayesianNet
 			}
 		}
 	}
-
-
-
-
-
-
-	//for (int i = 0; i < BayesNet.variables[var_num].parents.size(); i++)//one dimention for each parent and one for this var itself 
-	//{
-	//	int parent_num = BayesNet.variables[var_num].parents;
-	//	int parent_values = 
-	//	vector<float> vect(n, 0);
-	//}
-
 
 	return 0;
 }
@@ -214,10 +190,7 @@ ConditionalData read_Query(string line, BayesianNetwork &BayesNet)
 		Evidence.value = BayesNet.variables[Evidence.var].get_value_num(tokens[i + 1]);
 		query.E_vec.push_back(Evidence);
 	}
-
 	query.algorithm_type = StringToInt(tokens[tokens.size() - 1]);
-
-
 	return query;
 }
 
@@ -253,7 +226,6 @@ void load_data(BayesianNetwork & BayesNet, vector<ConditionalData> & queries, st
 	string line;
 
 	//find "Network"
-
 	line = run_to_line(line_buffer, line_index, "Network");
 	if (line == "error")
 	{
@@ -280,10 +252,7 @@ void load_data(BayesianNetwork & BayesNet, vector<ConditionalData> & queries, st
 
 
 	//read variables until end
-
 	read_variable_data(line_buffer, line_index, BayesNet);
-
-
 
 	//find "Queries"
 	line = run_to_line(line_buffer, line_index, "Queries");
@@ -292,10 +261,6 @@ void load_data(BayesianNetwork & BayesNet, vector<ConditionalData> & queries, st
 		cout << "error - No Queries found in file\n";
 		pause_exit();
 	}
-
-
-
-
 
 	//read queries until end
 	line_index++;

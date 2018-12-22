@@ -18,14 +18,15 @@ public:
 	void set_prob(vector<int> values, float prob);//set prob to
 
 };
-class Var
+
+class Var//variable of the bayesian network (node)
 {
 public:
 	string name;
 	int num;
-	vector<string> Values;
-	vector< Var * > parents;//
-	vector<float> cpt;
+	vector<string> Values;//posible values
+	vector< Var * > parents;//pointers to all parents of the variable
+	vector<float> cpt;//conditional probability table (saved in 1D vector)
 	int current_value;
 
 	float get_prob_from_values(vector<int> value_numbers);
@@ -40,14 +41,13 @@ public:
 class BayesianNetwork
 {
 public:
-	vector<bool> removed_variables;
-
-	vector<Var> variables;
+	vector<bool> removed_variables;//every variable is or false or true = removed from the network
+	vector<Var> variables;//all the variables
 	int get_var_num(string var_name);
 	
 };
 
-struct Event//
+struct Event//a variable with his current value
 {
 	int var;//variable number
 	int value;//the current value of this variable
@@ -65,14 +65,10 @@ void load_data(BayesianNetwork & BayesNet, vector<ConditionalData> & queries, st
 string query_algorithm_1(BayesianNetwork & BayesNet, ConditionalData query);
 string query_algorithm_2_and_3(BayesianNetwork &  BayesNet, ConditionalData query);
 void save_data(string output_file, vector<string> answers);
-
 bool get_next_combinations(vector <int> & state, vector <int> max_states);
-
-//from function_lib:
 Factor eliminate_factor(Factor factor, int var, int & add_count);
 vector<Factor> find_and_remove_factors(vector<Factor> & factors, int var);
-Factor join_factors(vector<Factor>factors, int & multiply_count);//factors size >=2
-//vector<Factor> find_and_erase_smallest_factors(vector<Factor> & factors);
+Factor join_factors(vector<Factor>factors, int & multiply_count);
 Factor join_2_factors(Factor A, Factor B, int & multiply_count);
 void print_factors(vector<Factor> factors, string name);
 void print_factor(Factor factor, string name);

@@ -106,9 +106,10 @@ string query_algorithm_2_and_3(BayesianNetwork & BayesNet, ConditionalData query
 	}
 
 	//after eliminating all hidden variables - join all remaining factors
-	vector<Factor> factors_with_var = find_and_remove_factors(factors, query.Q.var);//get all factors containing the query variable
-	print_factors(factors_with_var, "factors with: " + NumberToString(query.Q.var));
-	Factor joined_factor = join_factors(factors_with_var,multiply_count);//join all factors with the query variable
+	//vector<Factor> factors_with_var = find_and_remove_factors(factors, query.Q.var);//get all factors containing the query variable
+	//print_factors(factors_with_var, "factors with: " + NumberToString(query.Q.var));
+	//Factor joined_factor = join_factors(factors_with_var,multiply_count);//join all factors with the query variable
+	Factor joined_factor = join_factors(factors, multiply_count);//join all factors
 	print_factor(joined_factor, "joint factor");
 
 	//normalize

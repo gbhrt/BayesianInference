@@ -9,20 +9,20 @@
 
 using namespace std;
 
-string NumberToString(float Number)
+string NumberToString(float Number)//becuase it use only c++98
 {
 	ostringstream ss;
 	ss << Number;
 	return ss.str();
 }
 
-float StringToFloat(const string &Text)
+float StringToFloat(const string &Text)//becuase it use only c++98
 {
 	istringstream ss(Text);
 	float result;
 	return ss >> result ? result : 0;
 }
-int StringToInt(const string &Text)
+int StringToInt(const string &Text)//becuase it use only c++98
 {
 	istringstream ss(Text);
 	float result;
@@ -69,7 +69,7 @@ bool get_next_combinations(vector <int> & state, vector <int> max_states)//retur
 }
 
 
-string create_answer(float prob, int add_count, int multiply_count)
+string create_answer(float prob, int add_count, int multiply_count)//combine probability, add count and multiply count to an answer string
 {
 	string answer_str;
 	stringstream stream;
